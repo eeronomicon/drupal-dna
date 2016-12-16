@@ -1,0 +1,44 @@
+<?php
+
+class DnaFindPairTestCase extends DrupalUnitTestCase
+{
+
+    public static function getInfo()
+    {
+        return array(
+        'name' => 'DNA Tests',
+        'description' => 'Tests to ensure the DNA strand translation logic is functioning properly.',
+        'group' => 'Epicodus Code Review Tests',
+        );
+    }
+
+    function testDnaFindPair()
+    {
+        $description = 'A DNA molecule of A returns T as its pair.';
+        $input = 'A';
+        $result = dna_find_pair($input);
+        $expected_output = 'T';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'A DNA molecule of T returns A as its pair.';
+        $input = 'T';
+        $result = dna_find_pair($input);
+        $expected_output = 'A';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'A DNA molecule of C returns G as its pair.';
+        $input = 'C';
+        $result = dna_find_pair($input);
+        $expected_output = 'G';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'A DNA molecule of G returns C as its pair.';
+        $input = 'G';
+        $result = dna_find_pair($input);
+        $expected_output = 'C';
+        $this->assertEqual($result, $expected_output, $description);
+
+    }
+
+
+}

@@ -1,0 +1,7 @@
+name = DNA Decoder
+description = Compute the corresponding other half of a DNA double-helix.
+package = Epicodus Code Review
+core = 7.x
+files[] = dna.module
+files[] = dna.test
+dependencies[] = simpletest
