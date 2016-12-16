@@ -37,10 +37,10 @@ class DnaFindPairTestCase extends DrupalUnitTestCase
         $expected_output = 'C';
         $this->assertEqual($result, $expected_output, $description);
 
-        $description = 'An input of space is returned as-is.';
+        $description = 'An input of space is returned as a null character.';
         $input = ' ';
         $result = dna_find_pair($input);
-        $expected_output = ' ';
+        $expected_output = '';
         $this->assertEqual($result, $expected_output, $description);
 
         $description = 'An input of ATCG returns TAGC.';
@@ -49,16 +49,16 @@ class DnaFindPairTestCase extends DrupalUnitTestCase
         $expected_output = 'TAGC';
         $this->assertEqual($result, $expected_output, $description);
 
-        $description = 'An input of A T C G returns T A G C.';
+        $description = 'An input of A T C G returns TAGC.';
         $input = 'A T C G';
         $result = dna_find_strand($input);
-        $expected_output = 'T A G C';
+        $expected_output = 'TAGC';
         $this->assertEqual($result, $expected_output, $description);
 
-        $description = 'An input of A c TC G b returns T  AG C .';
+        $description = 'An input of A c TC G b returns TAGC.';
         $input = 'A c TC G b';
         $result = dna_find_strand($input);
-        $expected_output = 'T  AG C ';
+        $expected_output = 'TAGC';
         $this->assertEqual($result, $expected_output, $description);
     }
 }

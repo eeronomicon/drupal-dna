@@ -62,7 +62,7 @@ function dna_find_pair($input) {
     } elseif ($input == 'G') {
         return 'C';
     } else {
-        return ' ';
+        return '';
     }
 }
 
@@ -70,7 +70,7 @@ function dna_find_strand($input) {
     $input_array = str_split($input);
     $output_array = array();
     foreach ($input_array as $input_letter) {
-        if (preg_match('/[ATCG ]/', $input_letter)) {
+        if (preg_match('/[ATCG]/', $input_letter)) {
             $output_array[] = dna_find_pair($input_letter);
         }
     }

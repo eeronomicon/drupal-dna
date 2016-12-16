@@ -28,10 +28,10 @@ Project Requirements: Your independent project has two parts today. First of all
 * A DNA molecule of T returns A as its pair.
 * A DNA molecule of C returns G as its pair.
 * A DNA molecule of G returns C as its pair.
-* An input of space is returned as-is.
+* An input of space is returned as a null character.
 * An input of ATCG returns TAGC.
-* An input of A T C G returns T A G C.
-* An input of A c TC G b returns T  AG C .
+* An input of A T C G returns TAGC.
+* An input of A c TC G b returns TAGC .
 
 ## Prerequisites
 
