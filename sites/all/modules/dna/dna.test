@@ -38,6 +38,12 @@ class DnaFindPairTestCase extends DrupalUnitTestCase
         $expected_output = 'C';
         $this->assertEqual($result, $expected_output, $description);
 
+        $description = 'An input of space is returned as-is.';
+        $input = ' ';
+        $result = dna_find_pair($input);
+        $expected_output = ' ';
+        $this->assertEqual($result, $expected_output, $description);
+
     }
 
 

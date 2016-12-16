@@ -1,5 +1,15 @@
 <?php
 
 function dna_find_pair($input) {
-    return ' ';
+    if ($input == 'A') {
+        return 'T';
+    } elseif ($input == 'T') {
+        return 'A';
+    } elseif ($input == 'C') {
+        return 'G';
+    } elseif ($input == 'G') {
+        return 'C';
+    } else {
+        return ' ';
+    }
 }
