@@ -13,3 +13,7 @@ function dna_find_pair($input) {
         return ' ';
     }
 }
+
+function dna_find_strand($input) {
+  
+}

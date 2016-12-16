@@ -44,6 +44,18 @@ class DnaFindPairTestCase extends DrupalUnitTestCase
         $expected_output = ' ';
         $this->assertEqual($result, $expected_output, $description);
 
+        $description = 'An input of ATCG returns TAGC.';
+        $input = 'ATCG';
+        $result = dna_find_strand($input);
+        $expected_output = 'TAGC';
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'An input of A T C G returns T A G C.';
+        $input = 'A T C G';
+        $result = dna_find_strand($input);
+        $expected_output = 'T A G C';
+        $this->assertEqual($result, $expected_output, $description);
+
     }
 
 
