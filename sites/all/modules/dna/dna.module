@@ -8,6 +8,12 @@ function dna_menu() {
         'access callback' => TRUE,
         'type' => MENU_NORMAL_ITEM,
     );
+    $items['dna_translated'] = array(
+        'title' => 'Translation Results',
+        'page callback' => 'dna_output',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
     return $items;
 }
 
@@ -16,12 +22,34 @@ function dna_form() {
         '#title' => 'Input Strand',
         '#type' => 'textfield',
         '#description' => t('Enter the strand to translate'),
+        '#required' => TRUE,
+        '#element_validate' => array('element_validate_strand'),
     );
     $form['submit'] = array(
         '#type' => 'submit',
         '#value' => 'Translate',
     );
     return $form;
+}
+
+function element_validate_strand($element) {
+    if (preg_match("/[^ATCG ]/", $element['#value'])) {
+        form_error($element, t('Only the capital letters A, T, C, and G are accepted. Along with spaces.'));
+    }
+}
+
+function dna_form_submit($form, &$form_state) {
+    $input_strand = $form_state['values']['input_strand'];
+    $output_strand = dna_find_strand($input_strand);
+    $_SESSION['dna_input'] = $input_strand;
+    $_SESSION['dna_output'] = $output_strand;
+    $form_state['redirect'] = 'dna_translated';
+}
+
+function dna_output() {
+    $input_strand = $_SESSION['dna_input'];
+    $output_strand = $_SESSION['dna_output'];
+    return $output_strand;
 }
 
 function dna_find_pair($input) {

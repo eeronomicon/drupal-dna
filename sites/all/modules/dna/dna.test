@@ -89,5 +89,28 @@ class DnaModuleTests extends DrupalWebTestCase {
         $this->assertText("ATCG", 'Output displayed!');
     }
 
+    public function testDnaInvalid() {
+        $this->drupalGet('dna');
+
+        $this->assertText("DNA Strand Translator", 'Form displayed!');
+
+        $form = array();
+        $form['input_strand'] = '';
+        $this->drupalPost('dna', $form, t('Translate'));
+
+        $this->assertText("Input Strand field is required", 'Null field error displayed!');
+    }
+
+    public function testDnaInvalidCharacters() {
+        $this->drupalGet('dna');
+
+        $this->assertText("DNA Strand Translator", 'Form displayed!');
+
+        $form = array();
+        $form['input_strand'] = 'ATCbf GG!';
+        $this->drupalPost('dna', $form, t('Translate'));
+
+        $this->assertText("Only the capital letters A, T, C, and G are accepted. Along with spaces.", 'Invalid character error displayed!');
+    }
 
 }
