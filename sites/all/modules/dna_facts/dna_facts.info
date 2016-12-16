@@ -1,0 +1,5 @@
+name = DNA Facts
+description = DNA articles displayed with Ajax.
+package = Epicodus Code Review
+core = 7.x
+files[] = dna_facts.module
