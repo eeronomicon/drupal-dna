@@ -86,7 +86,7 @@ class DnaModuleTests extends DrupalWebTestCase {
         $form['input_strand'] = 'TAGC';
         $this->drupalPost('dna', $form, t('Translate'));
 
-        $this->assertText("ATCG", 'Output displayed!');
+        $this->assertText("Input: TAGC / Output: ATCG", 'Output displayed!');
     }
 
     public function testDnaInvalid() {

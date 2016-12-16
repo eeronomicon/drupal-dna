@@ -9,7 +9,7 @@ function dna_menu() {
         'type' => MENU_NORMAL_ITEM,
     );
     $items['dna_translated'] = array(
-        'title' => 'Translation Results',
+        'title' => 'Translation Results (Input / Output)',
         'page callback' => 'dna_output',
         'access callback' => TRUE,
         'type' => MENU_CALLBACK,
@@ -49,7 +49,7 @@ function dna_form_submit($form, &$form_state) {
 function dna_output() {
     $input_strand = $_SESSION['dna_input'];
     $output_strand = $_SESSION['dna_output'];
-    return $output_strand;
+    return 'Input: ' . $input_strand . ' / Output: ' . $output_strand;
 }
 
 function dna_find_pair($input) {
