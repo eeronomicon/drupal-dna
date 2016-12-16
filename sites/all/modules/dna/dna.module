@@ -1,5 +1,29 @@
 <?php
 
+function dna_menu() {
+    $items['dna'] = array(
+        'title' => 'DNA Strand Translator',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('dna_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function dna_form() {
+    $form['input_strand'] = array(
+        '#title' => 'Input Strand',
+        '#type' => 'textfield',
+        '#description' => t('Enter the strand to translate'),
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Translate',
+    );
+    return $form;
+}
+
 function dna_find_pair($input) {
     if ($input == 'A') {
         return 'T';

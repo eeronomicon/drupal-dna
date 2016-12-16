@@ -2,7 +2,6 @@
 
 class DnaFindPairTestCase extends DrupalUnitTestCase
 {
-
     public static function getInfo()
     {
         return array(
@@ -61,6 +60,33 @@ class DnaFindPairTestCase extends DrupalUnitTestCase
         $result = dna_find_strand($input);
         $expected_output = 'T  AG C ';
         $this->assertEqual($result, $expected_output, $description);
+    }
+}
+
+class DnaModuleTests extends DrupalWebTestCase {
+
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA Module Test',
+            'description' => 'Functional tests for the DNA Module.',
+            'group' => 'Epicodus Code Review Tests',
+        );
+    }
+
+    public function setUp() {
+        parent::setUp(array('dna'));
+    }
+
+    public function testDnaValid() {
+        $this->drupalGet('dna');
+
+        $this->assertText("DNA Strand Translator", 'Form displayed!');
+
+        $form = array();
+        $form['input_strand'] = 'TAGC';
+        $this->drupalPost('dna', $form, t('Translate'));
+
+        $this->assertText("ATCG", 'Output displayed!');
     }
 
 
